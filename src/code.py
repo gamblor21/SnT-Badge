@@ -13,7 +13,7 @@ ADDRESS = 0x68
 i2c = board.I2C()
 
 pixels = neopixel.NeoPixel(board.D5, 6, brightness = 0.1, auto_write = False)
-pixels.fill((0,0,0))
+pixels.fill((0, 0, 0))
 pixels.show()
 
 rainbow_comet = RainbowComet(pixels, speed=0.1, tail_length=6, bounce = False)
