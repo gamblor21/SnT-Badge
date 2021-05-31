@@ -1,3 +1,11 @@
+"""
+
+`src.ICM20602`
+====================================================
+
+"""
+
+
 import adafruit_bus_device.i2c_device as i2c_device
 
 def twos_comp(val, bits):
@@ -6,7 +14,15 @@ def twos_comp(val, bits):
         val = val - (1 << bits)        # compute negative value
     return val
 
+
 class ICM20602:
+    """
+    Main Show and Tell Badge
+
+    :param ~busio.I2C i2c: The I2C bus the device is connected to.
+    :param int addr: Show and Tell Address. Defaults to :const:`0x68`
+
+    """
 
     _BUFFER = bytearray(6)
 
@@ -19,6 +35,10 @@ class ICM20602:
 
     @property
     def gyro(self):
+        """
+        The raw gyro sensor values.
+        A 3-tuple of X, Y, Z axis values
+        """
         xhigh = self._read_u8(0x43)
         xlow = self._read_u8(0x44)
 
@@ -44,6 +64,10 @@ class ICM20602:
 
     @property
     def acceleration(self):
+        """
+        The raw acceleration sensor values.
+        A 3-tuple of X, Y, Z axis values
+        """
         xhigh = self._read_u8(0x3b)
         xlow = self._read_u8(0x3c)
 
@@ -66,7 +90,6 @@ class ICM20602:
         valz = valz / 16384 * 9.8
 
         return (valx, valy, valz)
-
 
     def _read_u8(self, address):
         with self._sensor as i2c:
