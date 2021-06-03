@@ -9,3 +9,5 @@ The front has 6 Neopixels (connected to D5) and a light sensor (hooked to A0). T
 The source folder has sample code and a basic CircuitPython driver for the ICM-20602 but is far from a full implementation.
 
 ![FrontPCB](/front.jpg)
+
+![OSHW_FACTS](/oshw_facts.png)
